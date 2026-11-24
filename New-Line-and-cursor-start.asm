@@ -18,10 +18,23 @@ main proc
  
    mov dl ,'B'
  mov ah,2
- int 21h  
- 
+ int 21h 
+  
+  mov al,5
+  add al,6
+  
+  mov ah,2
+ int 21h 
+  
+   mov ah,01h  ;input with eco
+ int 21h
+          
+  mov ah,07h    ;input without eco 
+ int 21h
  mov ah, 4ch
- int 21h       
+ int 21h   
+ 
+    
   
 main endp
 end main

@@ -1,0 +1,19 @@
+.model small        ; program size: small is enough for us
+.stack 100h         ; set aside working memory for the program
+.data               ; variables would go here (none today)
+.code               ; our instructions start below
+main proc           ; the main part of our program starts here
+
+mov ah, 01h     ; service 01h: read one key, WITH echo
+int 21h         ; DOS waits for a key, shows it, puts it in AL
+
+mov dl, al      ; copy the key from AL into DL, ready to print
+mov ah, 02h     ; service 02h: print the character in DL
+int 21h         ; the same key appears a second time
+
+mov ah, 4ch     ; service 4Ch: end the program
+int 21h         ; call DOS: the program stops, back to DOS
+main endp           ; the main part of our program ends here
+end main            ; end of the file, start running at main
+
+
